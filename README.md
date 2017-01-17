@@ -3,7 +3,7 @@ Project to use Node-RED to connect raspberryPI and other IOT datasources to OSIs
 
 Pre-Reqs
 *  Raspberry PI 3
-   *  Node-red v0.14.6 (not the default) or higher already installed <add link to update document>
+   *  Node-red v0.14.6 (not the default) or higher already installed: https://github.com/langanjp/PI-NodeRed/wiki/Node-RED-Installation#upgrading-node-red-and-nodejs
    *  Other version of Raspberry PI and the default version of Node-RED should work, but have not been fully tested
 *  Connected to network, with a known IP address (may need keyboard, mouse and monitor for initial setup)
 *  PI Sense Hat
