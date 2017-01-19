@@ -1,5 +1,5 @@
 # PI-NodeRED
-Project to use Node-RED to connect Raspberry PI and other IOT datasources to OSIsoft PI using the PI Web API
+Project to use Node-RED to connect Raspberry PI and other IOT data sources to OSIsoft PI using the PI Web API
 
 Pre-Reqs
 *  Raspberry PI 3
