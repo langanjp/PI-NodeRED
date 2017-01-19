@@ -9,7 +9,7 @@ Pre-Reqs
 *  PI Sense Hat
 *  Access to PI Web API 2016 server or higher 
    *  Connected to your own (not shared) PI AF DB and your own (not shared) DA
-   *  If you need to share a DA, some AF templates will need to be modified before using to create a user specific AF teamplate to modify the hierarchy and tagnames that will be created by the templates.  This will need to be done before hand
+   *  If you need to share a DA, some AF templates will need to be modified before using to create a user specific AF template to modify the hierarchy and tagnames that will be created by the templates.
 *  PI Web API will need "Anonymous" and "Basic" authentication: 
    *  Anonymous will break PI Coresight searching, so it would ideally be a dedicated PI Web API server
 *  PI Tag pointsource
