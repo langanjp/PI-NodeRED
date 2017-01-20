@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OSIsoft.AF.xsd" SchemaVersion="2.0" SoftwareVersion="2.8.5.7759" ExportMode="AllReferences, NoUniqueID" PISystem="PIVM" Database="USERDB" Description="" Created="2016-12-15T01:02:24.017151Z" id="161a874f-7abf-11e6-830a-600292d8a6aa" ParentKey="c5b3eb7e-0fd9-4d98-b8f8-3e007103d46f" ExportedObject="rpi" ExportedType="AFElement" Identity="Element" PIPersist="148 {9895150E-085D-4fcb-A16D-5EF5D2527196} 2\{35a6dd80-cd95-40f8-8979-5ae9ad618d58}\Elements[{161a874f-7abf-11e6-830a-600292d8a6aa}]*PIVM\USERDB\rpi">
+  <AFElementTemplate>
+    <Name>rpi</Name>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+  </AFElementTemplate>
+  <AFElementTemplate>
+    <Name>pisensehat</Name>
+    <BaseTemplate>rpi</BaseTemplate>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+    <AFAttributeTemplate>
+      <Name>humidity</Name>
+      <DefaultUOM>%</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">40</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Attribute%;UOM="%";pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;span=100;typicalvalue=40</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>pressure</Name>
+      <DefaultUOM>mbar</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">1013</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Attribute%;UOM=mbar;pointtype=Float32;compdev=0.5;excdev=0.25;pointsource=IOTED;zero=0;span=2000;typicalvalue=1013</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>temperature</Name>
+      <DefaultUOM>°F</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">100</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Attribute%;UOM=°C;pointtype=Float32;compdev=1;excdev=0.5;pointsource=IOTED;span=100;typicalvalue=37</ConfigString>
+    </AFAttributeTemplate>
+  </AFElementTemplate>
+  <AFReferenceType>
+    <Name>Parent-Child</Name>
+    <ChildName>Child</ChildName>
+    <ParentName>Parent</ParentName>
+    <Strength>Strong</Strength>
+  </AFReferenceType>
+  <AFElement>
+    <Name>rpi</Name>
+    <AFElement ReferenceType="Parent-Child">
+      <Name>pisensehat</Name>
+    </AFElement>
+  </AFElement>
+</AF>

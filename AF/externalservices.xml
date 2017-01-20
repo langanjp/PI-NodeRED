@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="OSIsoft.AF.xsd" SchemaVersion="2.0" SoftwareVersion="2.8.5.7759" ExportMode="AllReferences, NoUniqueID" PISystem="PIVM" Database="USERDB" Description="" Created="2016-12-15T01:02:02.976186Z" id="655b5aa8-c0ac-11e6-8310-600292d8a6aa" ParentKey="c5b3eb7e-0fd9-4d98-b8f8-3e007103d46f" ExportedObject="externalservices" ExportedType="AFElement" Identity="Element" PIPersist="161 {9895150E-085D-4fcb-A16D-5EF5D2527196} 2\{35a6dd80-cd95-40f8-8979-5ae9ad618d58}\Elements[{655b5aa8-c0ac-11e6-8310-600292d8a6aa}]*PIVM\USERDB\externalservices">
+  <AFElementTemplate>
+    <Name>ercot_com_capacity</Name>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+  </AFElementTemplate>
+  <AFElementTemplate>
+    <Name>ercot_com_realtime</Name>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+    <AFAttributeTemplate>
+      <Name>capacity</Name>
+      <Description>capacity</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=20;excdev=10;pointsource=IOTED;span=100000;typicalvalue=40000</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>DC_E(East)</Name>
+      <Description>DC_E</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;zero=-5000;span=10000;typicalvalue=0</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>DC_L(LaredoVFT)</Name>
+      <Description>DC_L</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;zero=-5000;span=10000;typicalvalue=0</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>DC_N(North)</Name>
+      <Description>DC_N</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;zero=-5000;span=10000;typicalvalue=0</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>DC_R(Railroad)</Name>
+      <Description>DC_R</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;zero=-5000;span=10000;typicalvalue=0</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>DC_S(EaglePass)</Name>
+      <Description>DC_S</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;zero=-5000;span=10000;typicalvalue=0</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>demand</Name>
+      <Description>demand</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=20;excdev=10;pointsource=IOTED;span=100000;typicalvalue=40000</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>frequency</Name>
+      <Description>frequency</Description>
+      <DefaultUOM>Hz</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=0.002;excdev=0.001;pointsource=IOTED;zero=55;span=10;typicalvalue=60</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>timeerror</Name>
+      <Description>instant_time_error</Description>
+      <DefaultUOM>s</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=1;excdev=0.5;pointsource=IOTED;zero=-3600;span=7200;typicalvalue=0</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>windoutput</Name>
+      <Description>windoutput</Description>
+      <DefaultUOM>MW</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=20;excdev=10;pointsource=IOTED;span=20000;typicalvalue=4000</ConfigString>
+    </AFAttributeTemplate>
+  </AFElementTemplate>
+  <AFElementTemplate>
+    <Name>weather_gov_station</Name>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+    <AFAttributeTemplate>
+      <Name>dewpoint</Name>
+      <Description>dewpoint_f</Description>
+      <DefaultUOM>°F</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;UOM=°F;pointtype=Float32;compdev=1;excdev=0.5;pointsource=IOTED;zero=-50;span=200;typicalvalue=60</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>latitude</Name>
+      <Description>latitude</Description>
+      <Trait>Latitude</Trait>
+      <DefaultUOM>°</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>longitude</Name>
+      <Description>longitude</Description>
+      <Trait>Longitude</Trait>
+      <DefaultUOM>°</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>pressure</Name>
+      <Description>pressure_mb</Description>
+      <DefaultUOM>mbar</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;UOM=mbar;pointtype=Float32;compdev=0.5;excdev=0.25;pointsource=IOTED;zero=0;span=2000;typicalvalue=1013</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>relativehumidity</Name>
+      <Description>relative_humidity</Description>
+      <DefaultUOM>%</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;UOM="%";pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;span=100;typicalvalue=50</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>temperature</Name>
+      <Description>temp_f</Description>
+      <DefaultUOM>°F</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;UOM=°F;pointtype=Float32;compdev=1;excdev=0.5;pointsource=IOTED;zero=-150;span=300;typicalvalue=60</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>visibility</Name>
+      <Description>visibility_mi</Description>
+      <DefaultUOM>mi</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=0.5;excdev=0.25;pointsource=IOTED;span=100;typicalvalue=10</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>weather</Name>
+      <Description>weather</Description>
+      <Type>String</Type>
+      <Value type="String"></Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=String</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>winddirection</Name>
+      <Description>wind_degrees</Description>
+      <DefaultUOM>°</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=5;excdev=2.5;pointsource=IOTED;span=360;typicalvalue=180</ConfigString>
+    </AFAttributeTemplate>
+    <AFAttributeTemplate>
+      <Name>windspeed</Name>
+      <Description>wind_mph</Description>
+      <DefaultUOM>mi/h</DefaultUOM>
+      <Type>Double</Type>
+      <Value type="Double">0</Value>
+      <DataReference>PI Point</DataReference>
+      <ConfigString>\\%@\system|piserver%\%..\..\Element%.%..\Element%.%Element%.%Description%;pointtype=Float32;compdev=2;excdev=1;pointsource=IOTED;span=150;typicalvalue=0</ConfigString>
+    </AFAttributeTemplate>
+  </AFElementTemplate>
+  <AFElementTemplate>
+    <Name>weather_gov</Name>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+  </AFElementTemplate>
+  <AFElementTemplate>
+    <Name>externalsystems</Name>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+  </AFElementTemplate>
+  <AFElementTemplate>
+    <Name>ercot_com</Name>
+    <Type>None</Type>
+    <InstanceType>Element</InstanceType>
+    <AllowElementToExtend>false</AllowElementToExtend>
+  </AFElementTemplate>
+  <AFReferenceType>
+    <Name>Parent-Child</Name>
+    <ChildName>Child</ChildName>
+    <ParentName>Parent</ParentName>
+    <Strength>Strong</Strength>
+  </AFReferenceType>
+  <AFReferenceType>
+    <Name>ercot_com-capacity</Name>
+    <ChildName>capacity</ChildName>
+    <ParentName>ercot_com</ParentName>
+    <Strength>Strong</Strength>
+    <AllowedParentElementTemplate>ercot_com</AllowedParentElementTemplate>
+    <AllowedChildElementTemplate>ercot_com_capacity</AllowedChildElementTemplate>
+  </AFReferenceType>
+  <AFReferenceType>
+    <Name>ercot_com-realtime</Name>
+    <ChildName>realtime</ChildName>
+    <ParentName>ercot_com</ParentName>
+    <Strength>Strong</Strength>
+    <AllowedParentElementTemplate>ercot_com</AllowedParentElementTemplate>
+    <AllowedChildElementTemplate>ercot_com_realtime</AllowedChildElementTemplate>
+  </AFReferenceType>
+  <AFReferenceType>
+    <Name>externalsystems-ercot_com</Name>
+    <ChildName>ercot_com</ChildName>
+    <ParentName>externalsystems</ParentName>
+    <Strength>Strong</Strength>
+    <AllowedParentElementTemplate>externalsystems</AllowedParentElementTemplate>
+    <AllowedChildElementTemplate>ercot_com</AllowedChildElementTemplate>
+  </AFReferenceType>
+  <AFReferenceType>
+    <Name>externalsystems-externalsystems-ercot_com</Name>
+    <ChildName>externalsystems-ercot_com</ChildName>
+    <ParentName>externalsystems</ParentName>
+    <Strength>Strong</Strength>
+    <AllowedParentElementTemplate>externalsystems</AllowedParentElementTemplate>
+  </AFReferenceType>
+  <AFReferenceType>
+    <Name>externalsystems-weather_gov</Name>
+    <ChildName>weather_gov</ChildName>
+    <ParentName>externalsystems</ParentName>
+    <Strength>Strong</Strength>
+    <AllowedParentElementTemplate>externalsystems</AllowedParentElementTemplate>
+    <AllowedChildElementTemplate>weather_gov</AllowedChildElementTemplate>
+  </AFReferenceType>
+  <AFReferenceType>
+    <Name>weather_gov-station</Name>
+    <ChildName>station</ChildName>
+    <ParentName>weather_gov</ParentName>
+    <Strength>Strong</Strength>
+    <AllowedParentElementTemplate>weather_gov</AllowedParentElementTemplate>
+    <AllowedChildElementTemplate>weather_gov_station</AllowedChildElementTemplate>
+  </AFReferenceType>
+  <AFElement>
+    <Name>externalservices</Name>
+    <AFElement ReferenceType="Parent-Child">
+      <Name>ercot_com</Name>
+      <Template>ercot_com</Template>
+    </AFElement>
+    <AFElement ReferenceType="Parent-Child">
+      <Name>weather_gov</Name>
+    </AFElement>
+  </AFElement>
+</AF>
