@@ -17,4 +17,4 @@ Project to use Node-RED to connect Raspberry PI and other IOT data sources to OS
    *  Create one called IOTED, or modify the AF imports xmls to your own desired pointsource   
 
 ##Tutorial
-Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wiki) for a tutorial
+Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wiki) for a tutorial and instructions
