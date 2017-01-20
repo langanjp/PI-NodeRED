@@ -1,1 +1,71 @@
-[{"id":"3f75575c.481948","type":"inject","z":"99104a1f.e67d78","name":"on start","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":true,"x":94,"y":49,"wires":[["a37a17a2.b2dab8","430c4821.5b7c08"]]},{"id":"a37a17a2.b2dab8","type":"function","z":"99104a1f.e67d78","name":"set globals","func":"pi = {\n    url: \"https://<yourserver>/piwebapi\",\n    auth: \"Basic <yourhex64userpass>\",\n    afdb: \"\\\\\\\\<yourafserver>\\\\<yourafdb>\",\n    pidb: \"\\\\\\\\<yourpidb>\"\n    };\nglobal.set(\"pi\",pi);\n\n\nfunction myFunction(p1, p2) {\n    return p1*p2;              // The function returns the product of p1 and p2\n}\nglobal.set(\"myFunction\", myFunction);\n\nfunction webidfromlocation(loc) {\n    var locpos = loc.lastIndexOf(\"/\");\n    var locendpos = loc.length;\n    return loc.substring(locpos+1,locendpos);\n}\nglobal.set(\"webidfromlocation\", webidfromlocation);\n\npisensehat = { \n    humidity: {attribute: \"humidity\", units: \"%\"} ,\n    temperature: {attribute: \"temperature\", units: \"°C\"},\n    pressure: {attribute: \"pressure\", units: \"mbar\"}\n};\n\nglobal.set(\"pisensehat\",pisensehat);\n\nweather_gov_station = { \n    latitude: {attribute: \"latitude\"},\n    longitude: {attribute: \"longitude\"},\n    weather: {attribute: \"weather\"},\n    temp_f: {attribute: \"temperature\"},\n    relative_humidity: {attribute: \"relativehumidity\"},\n    wind_degrees: {attribute: \"winddirection\"},\n    wind_mph: {attribute: \"windspeed\"},\n    pressure_mb: {attribute: \"pressure\"},\n    dewpoint_f: {attribute: \"dewpoint\"},\n    visibility_mi: {attribute: \"visibility\"}\n};\n\nglobal.set(\"weather_gov_station\",weather_gov_station);\n\nercot_com_realtime = {\n    \"Current Frequency\": {attribute: \"frequency\"},\n    \"Instantaneous Time Error\": {attribute: \"timeerror\"},\n    \"Actual System Demand\": {attribute: \"demand\"},\n    \"Total System Capacity (not including Ancillary Services)\": {attribute: \"capacity\"},\n    \"Total Wind Output\": {attribute: \"windoutput\"},\n    \"DC_E (East)\": {attribute: \"DC_E(East)\"},\n    \"DC_L (Laredo VFT)\": {attribute: \"DC_L(LaredoVFT)\"},\n    \"DC_N (North)\": {attribute: \"DC_N(North)\"},\n    \"DC_R (Railroad)\": {attribute: \"DC_R(Railroad)\"},\n    \"DC_S (Eagle Pass)\": {attribute: \"DC_S(EaglePass)\"},\n};\n\nglobal.set(\"ercot_com_realtime\",ercot_com_realtime);\n\nreturn;","outputs":1,"noerr":0,"x":297,"y":49,"wires":[[]]},{"id":"430c4821.5b7c08","type":"exec","z":"99104a1f.e67d78","command":"cat /proc/cpuinfo | grep Serial | cut -d ':' -f 2","addpay":false,"append":"","useSpawn":"","timer":"","name":"get rpi serial number","x":315,"y":118,"wires":[["1a8ada0a.77e146"],[],[]]},{"id":"1a8ada0a.77e146","type":"function","z":"99104a1f.e67d78","name":"set global rp id","func":"var mynum = parseInt(msg.payload, 16);\nvar iotid = mynum.toString(16);\nglobal.set(\"iotid\", iotid);\n\nmsg.payload = iotid;\n\nreturn msg;","outputs":1,"noerr":0,"x":538,"y":104.5,"wires":[["4d6d2710.2e4c08"]]},{"id":"4d6d2710.2e4c08","type":"debug","z":"99104a1f.e67d78","name":"","active":false,"console":"false","complete":"false","x":739,"y":104.5,"wires":[]}]
+[{
+    "id": "3f75575c.481948",
+    "type": "inject",
+    "z": "99104a1f.e67d78",
+    "name": "on start",
+    "topic": "",
+    "payload": "",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": true,
+    "x": 94,
+    "y": 49,
+    "wires": [
+        ["a37a17a2.b2dab8", "430c4821.5b7c08"]
+    ]
+}, {
+    "id": "a37a17a2.b2dab8",
+    "type": "function",
+    "z": "99104a1f.e67d78",
+    "name": "set globals",
+    "func": "pi = {\n    url: \"https://<yourserver>/piwebapi\",\n    auth: \"Basic <yourhex64userpass>\",\n    afdb: \"\\\\\\\\<yourafserver>\\\\<yourafdb>\",\n    pidb: \"\\\\\\\\<yourpidb>\"\n    };\nglobal.set(\"pi\",pi);\n\n\nfunction myFunction(p1, p2) {\n    return p1*p2;              // The function returns the product of p1 and p2\n}\nglobal.set(\"myFunction\", myFunction);\n\nfunction webidfromlocation(loc) {\n    var locpos = loc.lastIndexOf(\"/\");\n    var locendpos = loc.length;\n    return loc.substring(locpos+1,locendpos);\n}\nglobal.set(\"webidfromlocation\", webidfromlocation);\n\npisensehat = { \n    humidity: {attribute: \"humidity\", units: \"%\"} ,\n    temperature: {attribute: \"temperature\", units: \"°C\"},\n    pressure: {attribute: \"pressure\", units: \"mbar\"}\n};\n\nglobal.set(\"pisensehat\",pisensehat);\n\nweather_gov_station = { \n    latitude: {attribute: \"latitude\"},\n    longitude: {attribute: \"longitude\"},\n    weather: {attribute: \"weather\"},\n    temp_f: {attribute: \"temperature\"},\n    relative_humidity: {attribute: \"relativehumidity\"},\n    wind_degrees: {attribute: \"winddirection\"},\n    wind_mph: {attribute: \"windspeed\"},\n    pressure_mb: {attribute: \"pressure\"},\n    dewpoint_f: {attribute: \"dewpoint\"},\n    visibility_mi: {attribute: \"visibility\"}\n};\n\nglobal.set(\"weather_gov_station\",weather_gov_station);\n\nercot_com_realtime = {\n    \"Current Frequency\": {attribute: \"frequency\"},\n    \"Instantaneous Time Error\": {attribute: \"timeerror\"},\n    \"Actual System Demand\": {attribute: \"demand\"},\n    \"Total System Capacity (not including Ancillary Services)\": {attribute: \"capacity\"},\n    \"Total Wind Output\": {attribute: \"windoutput\"},\n    \"DC_E (East)\": {attribute: \"DC_E(East)\"},\n    \"DC_L (Laredo VFT)\": {attribute: \"DC_L(LaredoVFT)\"},\n    \"DC_N (North)\": {attribute: \"DC_N(North)\"},\n    \"DC_R (Railroad)\": {attribute: \"DC_R(Railroad)\"},\n    \"DC_S (Eagle Pass)\": {attribute: \"DC_S(EaglePass)\"},\n};\n\nglobal.set(\"ercot_com_realtime\",ercot_com_realtime);\n\nreturn;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 297,
+    "y": 49,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "430c4821.5b7c08",
+    "type": "exec",
+    "z": "99104a1f.e67d78",
+    "command": "cat /proc/cpuinfo | grep Serial | cut -d ':' -f 2",
+    "addpay": false,
+    "append": "",
+    "useSpawn": "",
+    "timer": "",
+    "name": "get rpi serial number",
+    "x": 315,
+    "y": 118,
+    "wires": [
+        ["1a8ada0a.77e146"],
+        [],
+        []
+    ]
+}, {
+    "id": "1a8ada0a.77e146",
+    "type": "function",
+    "z": "99104a1f.e67d78",
+    "name": "set global rp id",
+    "func": "var mynum = parseInt(msg.payload, 16);\nvar iotid = mynum.toString(16);\nglobal.set(\"iotid\", iotid);\n\nmsg.payload = iotid;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 538,
+    "y": 104.5,
+    "wires": [
+        ["4d6d2710.2e4c08"]
+    ]
+}, {
+    "id": "4d6d2710.2e4c08",
+    "type": "debug",
+    "z": "99104a1f.e67d78",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "false",
+    "x": 739,
+    "y": 104.5,
+    "wires": []
+}]
