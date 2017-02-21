@@ -20,5 +20,5 @@ Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wik
    *  Anonymous will break PI Coresight searching, so it would ideally be a dedicated PI Web API server
    *  Also, it is not advised to leave a PI Web API server in Anonymous if write enabled. Anonymous access is needed for one example of the PI Web API's websocket (or Channels) due to limitations of the Node-RED websocket implementation.  Either create a PI Web API server just for Anonymous (and read-only access to certain tags or elements) or plan to remove Anonymous after doing the example exercise. 
 *  PI Tag pointsource
-   *  Create one called IOTED, or modify the AF imports xmls to your own desired pointsource   
+   *  This will automatically create one called IOTED as part of the automated PI tag creation, or modify the AF imports xmls to your own desired pointsource   
 
