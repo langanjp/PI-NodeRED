@@ -2,7 +2,7 @@
 Project to use Node-RED to connect Raspberry PI and other IOT data sources to OSIsoft PI using the PI Web API
 
 ## Overview
-This project and tutorial show the steps using Node-RED (a node.js / JavaScript based graphical progamming language) to collect and transform data from a Raspberry PI and PI Sense HAT (json) and send it to the OSIsoft PI System.  This also explores gathering data from other web sources to send to the PI System, including weather station data (xml) from the National Weather Service (weather.com), and grid data (html) from ERCOT (ercot.com).  This project also demonstrates displaying of OSIsoft PI Data on a Raspberry PI - PI Sense HAT display.  Finally, it also offers a simple tutorial on using the PI Sense HAT in Node-RED.   
+This project and tutorial show the steps using Node-RED (a node.js / JavaScript based graphical progamming language) to collect and transform data from a Raspberry PI and PI Sense HAT (json) and send it to the OSIsoft PI System.  This also explores gathering data from other web sources to send to the PI System, including weather station data (xml) from the National Weather Service (weather.com), and power grid data (html) from ERCOT (ercot.com).  This project also demonstrates displaying of OSIsoft PI Data on a Raspberry PI - PI Sense HAT display.  Finally, it also offers a simple tutorial on using the PI Sense HAT in Node-RED.   
 
 ##Tutorial
 Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wiki) for a tutorial and instructions
@@ -14,8 +14,9 @@ Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wik
    *  Other version of Raspberry PI and the default version of Node-RED may work, but have not been tested
 *  Connected to network, with a known IP address (may need keyboard, mouse and monitor for initial setup)
 *  PI Sense Hat
+   * If you don't have a PI Sense Hat, you might be able to use one of 2 PI Sense Hat emulators: https://www.raspberrypi.org/blog/desktop-sense-hat-emulator/ or https://www.raspberrypi.org/blog/sense-hat-emulator/ (both are untested)
 *  Access to PI Web API 2016 server or higher 
-   *  Connected to your own (not shared) PI AF DB and your own (not shared) DA
+   *  Connected to your own (not shared) PI Asset Framework (AF) DB and your own (not shared) PI Data Archive (DA) 
    *  If you need to share a DA, some AF templates will need to be modified before using to create a user specific AF template to modify the hierarchy and tagnames that will be created by the templates.
 *  PI Web API will need "Anonymous" and "Basic" authentication: 
    *  Anonymous will break PI Coresight searching, so it would ideally be a dedicated PI Web API server
