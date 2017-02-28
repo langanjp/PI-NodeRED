@@ -9,8 +9,9 @@ Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wik
 
 ##Pre-Reqs
 *  Raspberry PI 3
-   *  Node-red v0.14.6 (not the default) or higher already installed: https://github.com/langanjp/PI-NodeRed/wiki/Node-RED-Installation#upgrading-node-red-and-nodejs
-   *  Other version of Raspberry PI and the default version of Node-RED should work, but have not been fully tested
+   *  running Raspian Jessie  
+   *  running Node-red v0.14.6 (not the default) or higher already installed: https://github.com/langanjp/PI-NodeRed/wiki/Node-RED-Installation#upgrading-node-red-and-nodejs
+   *  Other version of Raspberry PI and the default version of Node-RED may work, but have not been tested
 *  Connected to network, with a known IP address (may need keyboard, mouse and monitor for initial setup)
 *  PI Sense Hat
 *  Access to PI Web API 2016 server or higher 
