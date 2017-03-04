@@ -15,7 +15,7 @@ Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wik
 *  Connected to network, with a known IP address (may need keyboard, mouse and monitor for initial setup)
 *  PI Sense Hat (https://www.raspberrypi.org/products/sense-hat/)
    * If you don't have a PI Sense Hat, you might be able to use one of 2 PI Sense Hat emulators: https://www.raspberrypi.org/blog/desktop-sense-hat-emulator/ or https://www.raspberrypi.org/blog/sense-hat-emulator/ (both are untested)
-*  Access to PI Web API 2016 server or higher 
+*  Access to OSIsoft PI Web API 2016 server or higher 
    *  Connected to your own (not shared) PI Asset Framework (AF) DB and your own (not shared) PI Data Archive (DA) 
    *  If you need to share a DA, some AF templates will need to be modified before using to create a user specific AF template to modify the hierarchy and tagnames that will be created by the templates.
 *  PI Web API will need "Anonymous" and "Basic" authentication: 
@@ -23,4 +23,3 @@ Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wik
    *  Also, it is not advised to leave a PI Web API server in Anonymous if write enabled. Anonymous access is needed for one example of the PI Web API's websocket (or Channels) due to limitations of the Node-RED websocket implementation.  Either create a PI Web API server just for Anonymous (and read-only access to certain tags or elements) or plan to remove Anonymous after doing the example exercise. 
 *  PI Tag pointsource
    *  This will automatically create one called IOTED as part of the automated PI tag creation, or modify the AF imports xmls to your own desired pointsource   
-
