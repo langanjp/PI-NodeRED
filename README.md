@@ -4,10 +4,10 @@ Project to use Node-RED to connect Raspberry PI and other IOT data sources to OS
 ## Overview
 This project and tutorial show the steps using Node-RED (a node.js / JavaScript based graphical progamming language) to collect and transform data from a Raspberry PI and PI Sense HAT (json) and send it to the OSIsoft PI System.  This also explores gathering data from other web sources to send to the PI System, including weather station data (xml) from the National Weather Service (weather.com), and power grid data (html) from ERCOT (ercot.com).  This project also demonstrates displaying of OSIsoft PI Data on a Raspberry PI - PI Sense HAT display.  Finally, it also offers a simple tutorial on using the PI Sense HAT in Node-RED.   
 
-##Tutorial
+## Tutorial
 Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wiki) for a tutorial and instructions
 
-##Pre-Reqs
+## Pre-Reqs
 *  Raspberry PI 3 (https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
    *  running Raspian Jessie  
    *  running Node-red v0.14.6 (not the default) or higher already installed: https://github.com/langanjp/PI-NodeRed/wiki/Node-RED-Installation#upgrading-node-red-and-nodejs
