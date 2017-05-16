@@ -14,7 +14,7 @@ Please refer to this project's [Wiki](https://github.com/langanjp/PI-NodeRED/wik
    *  Other version of Raspberry PI and the default version of Node-RED may work, but have not been tested
 *  Connected to network, with a known IP address (may need keyboard, mouse and monitor for initial setup)
 *  PI Sense Hat (https://www.raspberrypi.org/products/sense-hat/)
-   * If you don't have a PI Sense Hat, you might be able to use one of 2 PI Sense Hat emulators: https://www.raspberrypi.org/blog/desktop-sense-hat-emulator/ or https://www.raspberrypi.org/blog/sense-hat-emulator/ (both are untested)
+   * If you don't have a PI Sense Hat, there is a node-red sense hat simulator that you can install: https://www.npmjs.com/package/node-red-node-pi-sense-hat-simulator.  It does not fully support the exercises as it does not support displaying text.
 *  Access to OSIsoft PI Web API 2016 server or higher 
    *  Connected to your own (not shared) PI Asset Framework (AF) DB and your own (not shared) PI Data Archive (DA) 
    *  If you need to share a DA, some AF templates will need to be modified before using to create a user specific AF template to modify the hierarchy and tagnames that will be created by the templates.
