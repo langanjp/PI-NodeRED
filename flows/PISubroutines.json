@@ -1,0 +1,366 @@
+[
+    {
+        "id": "37edde5c.dbffe2",
+        "type": "subflow",
+        "name": "PI AF Element",
+        "info": "",
+        "in": [
+            {
+                "x": 34,
+                "y": 96,
+                "wires": [
+                    {
+                        "id": "1cf381e4.8bb5fe"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 657,
+                "y": 289,
+                "wires": [
+                    {
+                        "id": "90ad984.71c8d68",
+                        "port": 0
+                    },
+                    {
+                        "id": "ffb8f5e2.a6aee8",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "1cf381e4.8bb5fe",
+        "type": "function",
+        "z": "37edde5c.dbffe2",
+        "name": "No",
+        "func": "var path = msg.pi.pathelement;\n\nvar auth = msg.pi.auth;\nvar url = msg.pi.url;\nvar baseurl = \"/elements?path=\"; \nvar urlparam = encodeURIComponent(path);\nmsg.url = url.concat(baseurl,urlparam);\nmsg.method = \"GET\";\nmsg.headers = {\n        Authorization: auth                     \n    };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 148,
+        "y": 96.95745849609375,
+        "wires": [
+            [
+                "28e1ce7e.e69b92"
+            ]
+        ]
+    },
+    {
+        "id": "28e1ce7e.e69b92",
+        "type": "http request",
+        "z": "37edde5c.dbffe2",
+        "name": "Element WebId from PI",
+        "method": "use",
+        "ret": "obj",
+        "url": "",
+        "tls": "",
+        "x": 354.6666259765625,
+        "y": 96.95745849609375,
+        "wires": [
+            [
+                "ffb8f5e2.a6aee8"
+            ]
+        ]
+    },
+    {
+        "id": "ffb8f5e2.a6aee8",
+        "type": "function",
+        "z": "37edde5c.dbffe2",
+        "name": "Element WebId?",
+        "func": "var auth = msg.pi.auth;\nvar url = msg.pi.url;\nvar webid = msg.payload.WebId;\n\nif (webid === null || webid === undefined) {\n// send to PI creation - will need object_type, path\n    node.warn(\"Still no webid, need to create\");\n    var msg2 = {payload:{}};\n    msg2.xmsg = msg.xmsg;\n    msg2.pi = msg.pi;\n    node.send([null,msg2]);\n}\nelse {\n    var path = msg.pi.pathelement;\n    node.warn (path + \" \" + webid );\n\n    global.set(path,webid);\n    msg.payload = msg.xmsg;\n    delete msg.xmsg;\n    node.send([msg,null]);\n}\nreturn;",
+        "outputs": "2",
+        "noerr": 0,
+        "x": 585,
+        "y": 97.95745849609375,
+        "wires": [
+            [],
+            [
+                "8bf1e551.10fd18"
+            ]
+        ]
+    },
+    {
+        "id": "8ecf9489.e810e8",
+        "type": "http request",
+        "z": "37edde5c.dbffe2",
+        "name": "Get Parent WebId",
+        "method": "use",
+        "ret": "obj",
+        "url": "",
+        "tls": "",
+        "x": 321,
+        "y": 163.95745849609375,
+        "wires": [
+            [
+                "4f14de82.7986"
+            ]
+        ]
+    },
+    {
+        "id": "4f14de82.7986",
+        "type": "function",
+        "z": "37edde5c.dbffe2",
+        "name": "",
+        "func": "var path = msg.pi.pathelement;\nvar auth = msg.pi.auth;\nvar url = msg.pi.url;\nvar template = msg.pi.template;\nvar elementname = msg.pi.elementname;\nvar elementdescription = msg.pi.elementdescription;\nvar webidparent = msg.payload.WebId;\n\n\nvar urlparam = webidparent;\nvar baseurl = \"/elements/\" + urlparam + \"/elements\";\nvar body = {\n  \"Name\": elementname,\n  \"Description\": elementdescription,\n  \"TemplateName\": template\n};\n\nmsg.url = url.concat(baseurl);\nmsg.method = \"POST\";\nmsg.headers = {\n    Authorization: auth                     \n    };\nmsg.payload = body;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 149.25,
+        "y": 224.45745849609375,
+        "wires": [
+            [
+                "b269e811.82bd38"
+            ]
+        ]
+    },
+    {
+        "id": "b269e811.82bd38",
+        "type": "http request",
+        "z": "37edde5c.dbffe2",
+        "name": "Element Create",
+        "method": "use",
+        "ret": "txt",
+        "url": "",
+        "tls": "",
+        "x": 313.25,
+        "y": 224.45745849609375,
+        "wires": [
+            [
+                "2344c77e.f91dc8"
+            ]
+        ]
+    },
+    {
+        "id": "2344c77e.f91dc8",
+        "type": "function",
+        "z": "37edde5c.dbffe2",
+        "name": "",
+        "func": "var path = msg.pi.pathelement;\nvar auth = msg.pi.auth;\nvar url = msg.pi.url;\nvar loc = msg.headers.location;\nvar webid = context.global.webidfromlocation(loc);\n\nvar urlparam = webid;\nvar baseurl = \"/elements/\" + urlparam + \"/config\";\n\nmsg.url = url.concat(baseurl);\nmsg.method = \"POST\";\nmsg.headers = {\n    Authorization: auth                     \n    };\nmsg.payload = \"\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 144,
+        "y": 288.70745849609375,
+        "wires": [
+            [
+                "e41ab0e8.0e535"
+            ]
+        ]
+    },
+    {
+        "id": "e41ab0e8.0e535",
+        "type": "http request",
+        "z": "37edde5c.dbffe2",
+        "name": "Element CreateConfig",
+        "method": "use",
+        "ret": "obj",
+        "url": "",
+        "tls": "",
+        "x": 327.5,
+        "y": 289.70745849609375,
+        "wires": [
+            [
+                "90ad984.71c8d68"
+            ]
+        ]
+    },
+    {
+        "id": "90ad984.71c8d68",
+        "type": "function",
+        "z": "37edde5c.dbffe2",
+        "name": "",
+        "func": "// send entire xmsg payload back.  should check for 201 (created) or 200 (no issue)\n\n\nmsg.payload = msg.xmsg;\ndelete msg.xmsg;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540.25,
+        "y": 289.45745849609375,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8bf1e551.10fd18",
+        "type": "function",
+        "z": "37edde5c.dbffe2",
+        "name": "",
+        "func": "var auth = msg.pi.auth;\nvar url = msg.pi.url;\nvar path = msg.pi.pathelementparent;\n\nurlparam = encodeURIComponent(path);\nbaseurl = \"/elements?path=\" + urlparam;\nmsg.url = url.concat(baseurl);\nmsg.method = \"GET\";\nmsg.headers = {\n    Authorization: auth                     \n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 147.2764892578125,
+        "y": 164,
+        "wires": [
+            [
+                "8ecf9489.e810e8"
+            ]
+        ]
+    },
+    {
+        "id": "59c2b63e.2157a8",
+        "type": "comment",
+        "z": "37edde5c.dbffe2",
+        "name": "Get Element PI WebId and create Element if needed",
+        "info": "",
+        "x": 297.2764892578125,
+        "y": 49,
+        "wires": []
+    },
+    {
+        "id": "1ffcf3ea.a8380c",
+        "type": "subflow",
+        "name": "PI Write",
+        "info": "",
+        "in": [
+            {
+                "x": 57,
+                "y": 108,
+                "wires": [
+                    {
+                        "id": "b49bfdec.530f8"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 491,
+                "y": 167,
+                "wires": [
+                    {
+                        "id": "7b86327b.3850dc",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "e1289b52.f3c368",
+        "type": "function",
+        "z": "1ffcf3ea.a8380c",
+        "name": "Yes",
+        "func": "var auth = msg.pi.auth;\nvar url = msg.pi.url;\nvar webid = msg.pi.webid;\n\nvar urlparam = webid;\nvar baseurl = \"/streams/\" + urlparam + \"/value\";\n\nmsg.url = url.concat(baseurl);\nmsg.method = \"POST\";\nmsg.headers = {\n    Authorization: auth                     \n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 181,
+        "y": 164.95745849609375,
+        "wires": [
+            [
+                "7b86327b.3850dc"
+            ]
+        ]
+    },
+    {
+        "id": "7b86327b.3850dc",
+        "type": "http request",
+        "z": "1ffcf3ea.a8380c",
+        "name": "Value to PI",
+        "method": "use",
+        "ret": "txt",
+        "url": "",
+        "tls": "",
+        "x": 344,
+        "y": 164.95745849609375,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a48a4ff7.1df99",
+        "type": "function",
+        "z": "1ffcf3ea.a8380c",
+        "name": "No",
+        "func": "var auth = msg.pi.auth;\nvar url = msg.pi.url;\nvar path = msg.pi.path;\nvar baseurl = \"/attributes?path=\"; \nvar urlparam = encodeURIComponent(path);\nmsg.url = url.concat(baseurl,urlparam);\nmsg.method = \"GET\";\nmsg.headers = {\n        Authorization: auth                     \n    };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 181,
+        "y": 215.95745849609375,
+        "wires": [
+            [
+                "5afb9d79.7c2ee4"
+            ]
+        ]
+    },
+    {
+        "id": "5afb9d79.7c2ee4",
+        "type": "http request",
+        "z": "1ffcf3ea.a8380c",
+        "name": "Attribute WebId from PI",
+        "method": "use",
+        "ret": "obj",
+        "url": "",
+        "tls": "",
+        "x": 385.66650390625,
+        "y": 215.95745849609375,
+        "wires": [
+            [
+                "f847387e.ce7648"
+            ]
+        ]
+    },
+    {
+        "id": "f847387e.ce7648",
+        "type": "function",
+        "z": "1ffcf3ea.a8380c",
+        "name": "",
+        "func": "var path = msg.payload.Path;\n//node.warn(path);\nvar webid = msg.payload.WebId;\n//node.warn(webid);\n\nglobal.set(path,webid);\nmsg.pi.webid = webid;\nmsg.payload = msg.xmsg;\ndelete msg.xmsg;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 593,
+        "y": 215.95745849609375,
+        "wires": [
+            [
+                "e1289b52.f3c368"
+            ]
+        ]
+    },
+    {
+        "id": "b49bfdec.530f8",
+        "type": "function",
+        "z": "1ffcf3ea.a8380c",
+        "name": "Yes, Attribute WebId?",
+        "func": "var path = msg.pi.path;\n//node.warn(path);\nvar webid = global.get(path);\n//node.warn(webid);\n\nif (webid === null || webid === undefined) {    \n    msg.xmsg = msg.payload;\n    node.send([null, msg]);    \n}\n    else\n{\n    msg.pi.webid = webid;    \n    node.send([msg, null]);\n}\n\nreturn;",
+        "outputs": "2",
+        "noerr": 0,
+        "x": 228.2764892578125,
+        "y": 108,
+        "wires": [
+            [
+                "e1289b52.f3c368"
+            ],
+            [
+                "a48a4ff7.1df99"
+            ]
+        ]
+    },
+    {
+        "id": "555640bd.e2a2f",
+        "type": "comment",
+        "z": "1ffcf3ea.a8380c",
+        "name": "Write to PI",
+        "info": "",
+        "x": 188.2764892578125,
+        "y": 59,
+        "wires": []
+    },
+    {
+        "id": "c633dba0.ad9db8",
+        "type": "subflow:1ffcf3ea.a8380c",
+        "z": "d51d0596.0acec8",
+        "x": 142,
+        "y": 87,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b4b7c05d.2d211",
+        "type": "subflow:37edde5c.dbffe2",
+        "z": "d51d0596.0acec8",
+        "x": 336,
+        "y": 87,
+        "wires": [
+            []
+        ]
+    }
+]
